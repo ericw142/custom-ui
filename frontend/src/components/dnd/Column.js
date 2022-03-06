@@ -5,14 +5,14 @@ import { Task } from "./Task";
 
 export const Column = (props) => {
     return (
-        <div className='column fade-in min-height'>
-            <h4 className="is-size-4">{props.column.title}</h4>
+        <div className='column p-4 fade-in min-height'>
+            <input className="input" defaultValue={props.column.title} type="text"></input>
             <Droppable droppableId={props.column.id}>
                 {(provided, snapshot) => (
                     <div 
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={snapshot.isDraggingOver ? 'p-4 bg-transition has-background-light' : 'p-4 bg-transition'}
+                        className={snapshot.isDraggingOver ? 'pt-4 bg-transition has-background-light' : 'pt-4 bg-transition'}
                     >
                         {props.tasks.map((task, index) => {
                             return (

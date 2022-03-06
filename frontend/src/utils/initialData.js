@@ -1,30 +1,21 @@
 const initialData = {
     tasks : {
-        'task-1': { id: 'task-1', content: 'Take out the garbage' },
-        'task-2': { id: 'task-2', content: 'Watch my favorite show' },
-        'task-3': { id: 'task-3', content: 'Charge my phone' },
-        'task-4': { id: 'task-4', content: 'Cook dinner' },
-        'task-5': { id: 'task-5', content: 'Pepperoni Pizza' },
-        'task-6': { id: 'task-6', content: 'Steak and Mashed Potatoes' },
-        'task-7': { id: 'task-7', content: 'Sushi' },
-        'task-8': { id: 'task-8', content: 'Curry' },
-        'task-9': { id: 'task-9', content: 'FFXIV' },
-        'task-10': { id: 'task-10', content: 'Doom' },
-        'task-11': { id: 'task-11', content: 'Bloodborne' },
-        'task-12': { id: 'task-12', content: 'Pokemon' },
-        'task-13': { id: 'task-13', content: 'React' },
-        'task-14': { id: 'task-14', content: 'Bulma' },
-        'task-15': { id: 'task-15', content: 'react-beautiful-dnd' },
-        'task-16': { id: 'task-16', content: 'Express' },
+        'task-1': { id: 'task-1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+        'task-2': { id: 'task-2', type: 'Image', src: 'https://images.unsplash.com/photo-1645951031195-4cbd6894d12a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80' },
     },
     columns: {
         'column-1': {
             id: 'column-1',
-            title: 'To Do',
-            taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
-        }
+            title: 'Example Column',
+            taskIds: ['task-1', 'task-2'],
+        },
+        'column-2': {
+            id: 'column-2',
+            title: '',
+            taskIds: [],
+        },
     },
-    columnOrder: ['column-1']
+    columnOrder: ['column-1', 'column-2']
 }
 
 export default initialData;

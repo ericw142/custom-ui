@@ -15,8 +15,8 @@ export const Body = () => {
                 setColumnTotal(2)
                 setColumns({...columns, 'column-2': {
                     id: 'column-2',
-                    title: 'Favorite Foods',
-                    taskIds: ['task-5', 'task-6', 'task-7', 'task-8'],
+                    title: '',
+                    taskIds: [],
                 }})
                 setColumnOrder([...columnOrder, 'column-2'])
                 setColumnText('two')
@@ -25,8 +25,8 @@ export const Body = () => {
                 setColumnTotal(3)
                 setColumns({...columns, 'column-3': {
                     id: 'column-3',
-                    title: 'Favorite Games',
-                    taskIds: ['task-9', 'task-10', 'task-11', 'task-12'],
+                    title: '',
+                    taskIds: [],
                 }})
                 setColumnOrder([...columnOrder, 'column-3'])
                 setColumnText('three')
@@ -35,8 +35,8 @@ export const Body = () => {
                 setColumnTotal(4)
                 setColumns({...columns, 'column-4': {
                     id: 'column-4',
-                    title: 'Technologies Used',
-                    taskIds: ['task-13', 'task-14', 'task-15', 'task-16']
+                    title: '',
+                    taskIds: []
                 }})
                 setColumnOrder([...columnOrder, 'column-4'])
                 setColumnText('four')
