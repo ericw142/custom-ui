@@ -31,19 +31,42 @@ export const DragDropContextWrapper = (props) => {
             return
         }
 
-        const column = props.columns[source.droppableId];
-        const newTaskIds = Array.from(column.taskIds);
-        newTaskIds.splice(source.index, 1);
-        newTaskIds.splice(destination.index, 0, draggableId);
+        const start = props.columns[source.droppableId];
+        const finish = props.columns[destination.droppableId];
 
-        const newColumn = {
-            ...column,
-            taskIds: [...newTaskIds]
+        if (start === finish) {
+            const newTaskIds = Array.from(start.taskIds);
+            newTaskIds.splice(source.index, 1);
+            newTaskIds.splice(destination.index, 0, draggableId);
+    
+            const newColumn = {
+                ...start,
+                taskIds: [...newTaskIds]
+            }
+            props.setColumns({
+                ...props.columns,
+                [newColumn.id]: newColumn,
+            })
+        } else {
+            const startTaskIds = Array.from(start.taskIds);
+            startTaskIds.splice(source.index, 1);
+            const newStart = {
+                ...start,
+                taskIds: startTaskIds,
+            };
+            const finishTaskIds = Array.from(finish.taskIds);
+            finishTaskIds.splice(destination.index, 0, draggableId);
+            const newFinish = {
+                ...finish,
+                taskIds: finishTaskIds,
+            };
+            props.setColumns({
+                ...props.columns,
+                [newStart.id]: newStart,
+                [newFinish.id]: newFinish,
+            })
         }
-        props.setColumns({
-            ...props.columns,
-            [newColumn.id]: newColumn,
-        })
+
         setRerender(!rerender)
     }
 

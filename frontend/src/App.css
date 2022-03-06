@@ -2,6 +2,18 @@ header {
     margin: 10em;
 }
 
+main {
+    padding-bottom: 10em;
+}
+
+.min-height {
+    min-height: 100px;
+}
+
+.bg-transition {
+    transition: background-color 0.2s ease;
+}
+
 .button-padding {
     padding-bottom: calc(0.5em - 1px);
     padding-left: 1em;

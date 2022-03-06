@@ -57,7 +57,7 @@ export const Body = () => {
     }
 
     return (
-        <div className='has-text-centered container'>
+        <main className='has-text-centered container'>
             <div className='columns'>
                 <div className='column is-flex is-justify-content-center'>
                     <button onClick={() => changeColumnTotal()} className='button'>{columnText}</button>
@@ -71,6 +71,6 @@ export const Body = () => {
                 tasks={tasks} 
                 columnTotal={columnTotal}
             />
-        </div>
+        </main>
     )
 }
