@@ -1,33 +1,15 @@
-import logo from './logo.svg';
+import 'bulma/css/bulma.min.css';
 import './App.css';
-import axios from 'axios';
+import { Header } from './components/Header';
+import { Body } from './components/Body';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={() => {
-          axios.get('/test')
-          .then(resp => {
-            console.log(resp)
-          })
-          .catch(err => console.error(err))
-        }}>TEST API</button>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <Body />
+        </div>
+    );
 }
 
 export default App;
