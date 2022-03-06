@@ -6,7 +6,7 @@ import { Task } from "./Task";
 export const Column = (props) => {
     return (
         <div className='column fade-in min-height'>
-            <h4>{props.column.title}</h4>
+            <h4 className="is-size-4">{props.column.title}</h4>
             <Droppable droppableId={props.column.id}>
                 {(provided, snapshot) => (
                     <div 
