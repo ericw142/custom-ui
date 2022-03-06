@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import initialData from '../utils/initialData';
-import { DragDropContext } from './dnd/DragDropContext';
+import { DragDropContextWrapper } from './dnd/DragDropContextWrapper';
 
 export const Body = () => {
     const [columns, setColumns] = useState(initialData.columns)
@@ -64,7 +64,13 @@ export const Body = () => {
                     <p className='mb-0 button-padding'>column{columnTotal > 1 ? <span>s</span> : <></>}</p>
                 </div>
             </div>
-            <DragDropContext columnOrder={columnOrder} columns={columns} tasks={tasks} columnTotal={columnTotal}/>
+            <DragDropContextWrapper 
+                columnOrder={columnOrder} 
+                columns={columns} 
+                setColumns={setColumns} 
+                tasks={tasks} 
+                columnTotal={columnTotal}
+            />
         </div>
     )
 }
