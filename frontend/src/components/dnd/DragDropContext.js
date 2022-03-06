@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Column } from './Column';
 
 export const DragDropContext = (props) => {
+    const [jsx, setJsx] = useState([])
+    const renderColumns = () => {
+        let temp = [];
+        temp.push(props.columnOrder.map(columnId => {
+            let column = props.columns[columnId];
+            let tasks = column.taskIds.map(taskId => props.tasks[taskId]);
 
-    const renderColumns = (props) => {
-        let jsx = [];
-        for (let i = 0; i < props.columnTotal; i++) {
-            jsx.push(
-                <div className='column fade-in'>{i + 1}</div>
-            )
-        }
-        return jsx;
+            return <Column key={column.id} column={column} tasks={tasks}/>
+        }))
+        setJsx([...temp]);
     }
+
+    useEffect(() => {
+        renderColumns()
+    }, [props.columnTotal])
 
     return (
         <div className="columns">
-            {renderColumns(props)}
+            {jsx}
         </div>
     )
 }
