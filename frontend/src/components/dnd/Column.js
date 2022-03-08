@@ -5,8 +5,7 @@ import { Task } from "./Task";
 
 export const Column = (props) => {
     return (
-        <div className='column p-4 fade-in min-height'>
-            <input className="input" defaultValue={props.column.title} type="text"></input>
+        <div className='column p-4 fade-in min-height border'>
             <Droppable droppableId={props.column.id}>
                 {(provided, snapshot) => (
                     <div 

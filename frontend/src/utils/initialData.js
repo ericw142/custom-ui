@@ -6,12 +6,10 @@ const initialData = {
     columns: {
         'column-1': {
             id: 'column-1',
-            title: 'Example Column',
             taskIds: ['task-1', 'task-2'],
         },
         'column-2': {
             id: 'column-2',
-            title: '',
             taskIds: [],
         },
     },

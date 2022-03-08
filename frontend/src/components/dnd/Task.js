@@ -14,12 +14,12 @@ export const Task = (props) => {
                     >
                             {props.task.type === 'Image' ? (
                                 <>
-                                    <h5 className="is-5">Image Element</h5>
+                                    <h5 className="title is-5">Image Element</h5>
                                     <Image src={props.task.src}/>
                                 </>
                             ) : (
                                 <>
-                                    <h5 className="is-5">Text Element</h5>
+                                    <h5 className="title is-5">Text Element</h5>
                                     <p>{props.task.content}</p>
                                 </>
                             )}

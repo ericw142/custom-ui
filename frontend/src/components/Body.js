@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import initialData from '../utils/initialData';
 import { DragDropContextWrapper } from './dnd/DragDropContextWrapper';
+import { AddModal } from './elements/AddModal';
 
 export const Body = () => {
     const [columns, setColumns] = useState(initialData.columns)
     const [columnOrder, setColumnOrder] = useState(initialData.columnOrder)
     const [tasks, setTasks] = useState(initialData.tasks)
-    const [columnTotal, setColumnTotal] = useState(1)
-    const [columnText, setColumnText] = useState('one')
+    const [columnTotal, setColumnTotal] = useState(2)
+    const [columnText, setColumnText] = useState('two')
+    const [isActive, setIsActive] = useState('')
+    const [rerender, setRerender] = useState(false)
 
     const changeColumnTotal = () => {
         switch (columnTotal) {
@@ -56,13 +59,32 @@ export const Body = () => {
         }
     }
 
+    const openCloseModal = () => {
+        if (isActive === '') setIsActive(' is-active')
+        else setIsActive('')
+    }
+
     return (
         <main className='has-text-centered container'>
-            <div className='columns'>
-                <div className='column is-flex is-justify-content-center'>
-                    <button onClick={() => changeColumnTotal()} className='button'>{columnText}</button>
-                    <p className='mb-0 button-padding'>column{columnTotal > 1 ? <span>s</span> : <></>}</p>
-                </div>
+            <AddModal 
+                isActive={isActive} 
+                setIsActive={setIsActive} 
+                tasks={tasks} 
+                setTasks={setTasks} 
+                columns={columns} 
+                setColumns={setColumns} 
+                rerender={rerender}
+                setRerender={setRerender}
+            />
+            <div className='columns is-mobile'>
+                    <div className='column'></div>
+                    <div className='column is-flex'>
+                        <button onClick={() => changeColumnTotal()} className='ml-auto button title is-6'>{columnText}</button>
+                        <p className='mr-auto mt-1 button-padding title is-6'>column{columnTotal > 1 ? <span>s</span> : <></>}</p>
+                    </div>
+                    <div className='column is-flex'>
+                        <button onClick={() => openCloseModal()} className='ml-auto button title is-6'>add UI element</button>
+                    </div>
             </div>
             <DragDropContextWrapper 
                 columnOrder={columnOrder} 
@@ -70,6 +92,8 @@ export const Body = () => {
                 setColumns={setColumns} 
                 tasks={tasks} 
                 columnTotal={columnTotal}
+                rerender={rerender}
+                setRerender={setRerender}
             />
         </main>
     )

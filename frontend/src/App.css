@@ -6,8 +6,16 @@ main {
     padding-bottom: 10em;
 }
 
+.border {
+    border: 0.02em solid rgb(170, 170, 170);
+}
+
 .min-height {
     min-height: 100px;
+}
+
+.max-width {
+    width: 100%;
 }
 
 .bg-transition {

@@ -3,13 +3,13 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { Column } from './Column';
 
 export const DragDropContextWrapper = (props) => {
-    const [rerender, setRerender] = useState(false)
     const [jsx, setJsx] = useState([])
 
     const renderColumns = () => {
         let temp = [];
         temp.push(props.columnOrder.map(columnId => {
             let column = props.columns[columnId];
+            console.log(column)
             let tasks = column.taskIds.map(taskId => props.tasks[taskId]);
 
             return <Column key={column.id} column={column} tasks={tasks}/>
@@ -67,12 +67,12 @@ export const DragDropContextWrapper = (props) => {
             })
         }
 
-        setRerender(!rerender)
+        props.setRerender(!props.rerender)
     }
 
     useEffect(() => {
         renderColumns()
-    }, [props.columnTotal, rerender])
+    }, [props.columnTotal, props.rerender])
 
     return (
         <div className="columns">
