@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import initialData from '../utils/initialData';
 import { DragDropContextWrapper } from './dnd/DragDropContextWrapper';
 import { AddModal } from './elements/AddModal';
+import { Footer } from './Footer';
 
 export const Body = () => {
     const [columns, setColumns] = useState(initialData.columns)
@@ -64,6 +66,26 @@ export const Body = () => {
         else setIsActive('')
     }
 
+    const saveNewLayout = () => {
+        axios.post('/newLayout', {columns, columnOrder, tasks})
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        axios.get('/savedLayout')
+        .then(resp => {
+            if (resp.status === 200) {
+                console.log(resp.data)
+                setColumns(resp.data.columns)
+                setColumnOrder(resp.data.columnOrder)
+                setTasks(resp.data.tasks)
+                setRerender(!rerender)
+            }
+        })
+        .catch(err => console.log(err))
+    }, [])
+
     return (
         <main className='has-text-centered container'>
             <AddModal 
@@ -95,6 +117,7 @@ export const Body = () => {
                 rerender={rerender}
                 setRerender={setRerender}
             />
+            <Footer saveNewLayout={saveNewLayout}/>
         </main>
     )
 }

@@ -4,11 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const mongoose = require('mongoose');
 
 var baseRouter = require('./routes/baseRouter');
 
 var app = express();
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,11 +16,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+app.set('trust proxy', true);
 
 app.use("/", baseRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+mongoose.connect("mongodb://localhost/config", { 
+    useUnifiedTopology: true, 
+    useNewUrlParser: true, 
 });
 
 // error handler

@@ -13,15 +13,9 @@ export const Task = (props) => {
                         className={snapshot.isDragging ? "box bg-transition has-background-link has-text-white" : "box bg-transition"}
                     >
                             {props.task.type === 'Image' ? (
-                                <>
-                                    <h5 className="title is-5">Image Element</h5>
-                                    <Image src={props.task.src}/>
-                                </>
+                                <Image src={props.task.src}/>
                             ) : (
-                                <>
-                                    <h5 className="title is-5">Text Element</h5>
-                                    <p>{props.task.content}</p>
-                                </>
+                                <p>{props.task.content}</p>
                             )}
                     </div>
             )}
