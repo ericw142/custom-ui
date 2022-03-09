@@ -72,11 +72,23 @@ export const Body = () => {
         .catch(err => console.log(err))
     }
 
+    const deleteTask = (id, columnId) => {
+        let updatedTasks = {...tasks};
+        delete updatedTasks[id];
+
+        let updatedColumns = {...columns};
+        let idx = updatedColumns[columnId].taskIds.indexOf(id);
+        updatedColumns[columnId].taskIds.splice(idx, 1);
+
+        setTasks(updatedTasks)
+        setColumns(updatedColumns)
+        setRerender(!rerender)
+    }
+
     useEffect(() => {
         axios.get('/savedLayout')
         .then(resp => {
             if (resp.status === 200) {
-                console.log(resp.data)
                 setColumns(resp.data.columns)
                 setColumnOrder(resp.data.columnOrder)
                 setTasks(resp.data.tasks)
@@ -113,6 +125,7 @@ export const Body = () => {
                 columns={columns} 
                 setColumns={setColumns} 
                 tasks={tasks} 
+                deleteTask={deleteTask}
                 columnTotal={columnTotal}
                 rerender={rerender}
                 setRerender={setRerender}

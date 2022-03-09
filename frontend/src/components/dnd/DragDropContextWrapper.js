@@ -9,10 +9,9 @@ export const DragDropContextWrapper = (props) => {
         let temp = [];
         temp.push(props.columnOrder.map(columnId => {
             let column = props.columns[columnId];
-            console.log(column)
             let tasks = column.taskIds.map(taskId => props.tasks[taskId]);
 
-            return <Column key={column.id} column={column} tasks={tasks}/>
+            return <Column key={column.id} column={column} tasks={tasks} deleteTask={props.deleteTask}/>
         }))
         setJsx([...temp]);
     }

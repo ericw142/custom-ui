@@ -18,7 +18,9 @@ export const Column = (props) => {
                                 <Task 
                                     key={task.id} 
                                     index={index} 
-                                    task={task} 
+                                    task={task}
+                                    columnId={props.column.id}
+                                    deleteTask={props.deleteTask}
                                 />
                             )
                         })}
