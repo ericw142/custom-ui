@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import initialData from '../utils/initialData';
 import { DragDropContextWrapper } from './dnd/DragDropContextWrapper';
 import { AddModal } from './elements/AddModal';
@@ -13,6 +14,21 @@ export const Body = () => {
     const [columnText, setColumnText] = useState('two')
     const [isActive, setIsActive] = useState('')
     const [rerender, setRerender] = useState(false)
+
+    const createNotification = (type) => {
+        switch (type) {
+            case 'success':
+                NotificationManager.success('', 'Saved!', 2000);
+            break;
+            case 'warning':
+                NotificationManager.warning('', 'API does not appear to be running. Restart API to save layouts.', 5000);
+            break;
+            case 'error':
+                NotificationManager.error('', 'Error saving.', 2000);
+            break;
+            default: break;
+        }
+    }
 
     const changeColumnTotal = () => {
         switch (columnTotal) {
@@ -68,8 +84,12 @@ export const Body = () => {
 
     const saveNewLayout = () => {
         axios.post('/newLayout', {columns, columnOrder, tasks})
-        .then(resp => console.log(resp))
-        .catch(err => console.log(err))
+        .then(() => {
+            createNotification('success')
+        })
+        .catch(err => {
+            createNotification('error')
+        })
     }
 
     const deleteTask = (id, columnId) => {
@@ -96,6 +116,7 @@ export const Body = () => {
             }
         })
         .catch(err => console.log(err))
+        axios.get('/test', {timeout: 2000}).then().catch(() => createNotification('warning'))
     }, [])
 
     return (
@@ -130,6 +151,7 @@ export const Body = () => {
                 rerender={rerender}
                 setRerender={setRerender}
             />
+            <NotificationContainer />
             <Footer saveNewLayout={saveNewLayout}/>
         </main>
     )

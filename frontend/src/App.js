@@ -1,4 +1,5 @@
 import 'bulma/css/bulma.min.css';
+import 'react-notifications/lib/notifications.css';
 import './App.css';
 import { Header } from './components/Header';
 import { Body } from './components/Body';

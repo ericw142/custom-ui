@@ -12,7 +12,7 @@ export const Task = (props) => {
                     {...provided.dragHandleProps}
                     className={snapshot.isDragging ? "box bg-transition has-background-link has-text-white" : "box bg-transition"}
                 >
-                    <div className="has-text-right mb-1"><button className="button" onClick={() => props.deleteTask(props.task.id, props.columnId)}>x</button></div>
+                    <div className="has-text-right mb-1"><button className="button is-small is-responsive" onClick={() => props.deleteTask(props.task.id, props.columnId)}>x</button></div>
                     {props.task.type === 'Image' ? (
                         <Image src={props.task.src}/>
                     ) : (
